@@ -14,7 +14,12 @@ class CreateKhariansTable extends Migration
     public function up()
     {
         Schema::create('kharians', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->dateTime('tanggal');
+            $table->text('koderekening');
+            $table->text('namapegawai');
+            $table->text('uraian');
+            $table->bigInteger('jumlahanggaran');
             $table->timestamps();
         });
     }

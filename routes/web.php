@@ -23,8 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 Route::resource('ajaxpharians', 'PharianAjaxController');
+Route::resource('ajaxkharians', 'KharianAjaxController');
 Route::get('/laporan', 'LaporanController@index');
 Route::resource('laporan', 'LaporanController');
 Route::get('/tambah', 'PharianAjaxController@index');
+Route::get('/ktambah', 'KharianAjaxController@index');
 Route::get('/laporanuser', 'LaporanUserController@index');
 

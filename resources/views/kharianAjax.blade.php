@@ -36,7 +36,7 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/bootstrap/dashboard.css') }}" rel="stylesheet">
 
-    
+
 
 
 
@@ -54,9 +54,9 @@
 
     {{-- tanggal --}}
 
-    
 
-  
+
+
 
 
 
@@ -83,19 +83,19 @@
 </style>
 
 <script>
-  
+
 </script>
 
 <body>
-   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">LKP Bobotsari</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
             data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
-    
-        <h4 class="putih">Pemasukan Harian</h4>
+
+
+        <h4 class="putih">Pengeluaran</h4>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -110,58 +110,57 @@
     </nav>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('admin/home') }}">
-                            <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('tambah') }}">
-                            <span data-feather="edit-3"></span>
-                            Pemasukan
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('ktambah') }}">
-                            <span data-feather="shopping-cart"></span>
-                            Pengeluaran
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('laporan') }}">
-                            <span data-feather="bar-chart-2"></span>
-                            Laporan
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('admin/home') }}">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('tambah') }}">
+                                <span data-feather="edit-3"></span>
+                                Pemasukan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url('ktambah') }}">
+                                <span data-feather="shopping-cart"></span>
+                                Pengeluaran
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('laporan') }}">
+                                <span data-feather="bar-chart-2"></span>
+                                Laporan
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
-                <a class="btn btn-success ex1" href="javascript:void(0)" id="createNewPharian">Tambah Pemasukan Harian
+                <a class="btn btn-success ex1" href="javascript:void(0)" id="createNewKharian">Tambah Input Pengeluaran
                     (+)</a>
 
 
 
-                <table class="table table-bordered data-table" id="pharians">
+                <table class="table table-bordered data-table" id="kharians">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Id</th>
                             <th>Tanggal</th>
+                            <th>Kode Rekening</th>
                             <th>Nama Pegawai</th>
-                            <th>Keterangan</th>
-                            <th>Jumlah Pemasukan</th>
+                            <th>Uraian</th>
+                            <th>Jumlah Anggaran</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -177,14 +176,23 @@
                         <h4 class="modal-title" id="modelHeading"></h4>
                     </div>
                     <div class="modal-body">
-                        <form id="pharianForm" name="pharianForm" class="form-horizontal">
-                            <input type="hidden" name="pharian_id" id="pharian_id">
+                        <form id="kharianForm" name="kharianForm" class="form-horizontal">
+                            <input type="hidden" name="kharian_id" id="kharian_id">
 
 
                             <div class="form-group">
                                 <label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
                                 <div class="col-sm-12">
-                                    <input placeholder="Date" type="text" onfocus="(this.type='date')" class="form-control " id="tanggal" name="tanggal" value=""  required=""></input>
+                                    <input placeholder="Date" type="text" onfocus="(this.type='date')"
+                                        class="form-control " id="tanggal" name="tanggal" value="" required=""></input>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label">Kode Rekening</label>
+                                <div class="col-sm-12">
+                                    <textarea id="koderekening" name="koderekening" required=""
+                                        placeholder="Masukan Kode Rekening" class="form-control"></textarea>
                                 </div>
                             </div>
 
@@ -197,24 +205,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Keterangan</label>
+                                <label class="col-sm-2 control-label">Uraian</label>
                                 <div class="col-sm-12">
-                                    <textarea id="keterangan" name="keterangan" required=""
-                                        placeholder="Masukan Keterangan" class="form-control"></textarea>
+                                    <textarea id="uraian" name="uraian" required="" placeholder="Masukan uraian"
+                                        class="form-control"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-12 control-label">Jumlah Pemasukan</label>
+                                <label class="col-sm-12 control-label">Jumlah anggaran</label>
                                 <div class="col-sm-12">
-                                    <textarea id="jumlahpemasukan" name="jumlahpemasukan" required=""
-                                        placeholder="Keterangan Jumlah Pemasukan" class="form-control"></textarea>
+                                    <textarea id="jumlahanggaran" name="jumlahanggaran" required=""
+                                        placeholder="Keterangan Jumlah anggaran" class="form-control"></textarea>
                                 </div>
                             </div>
 
 
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Simpan Perubahan
+                                <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Simpan
+                                    Perubahan
                                 </button>
                             </div>
                         </form>
@@ -293,37 +302,39 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('ajaxpharians.index') }}",
+            ajax: "{{ route('ajaxkharians.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'id', name: 'id'},
                 {data: 'tanggal', name: 'tanggal'},
+                {data: 'koderekening', name: 'koderekening'},
                 {data: 'namapegawai', name: 'namapegawai'},
-                {data: 'keterangan', name: 'keterangan'},
-                {data: 'jumlahpemasukan', name: 'jumlahpemasukan'},
+                {data: 'uraian', name: 'uraian'},
+                {data: 'jumlahanggaran', name: 'jumlahanggaran'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
          
-        $('#createNewPharian').click(function () {
-            $('#saveBtn').val("create-pharian");
-            $('#pharian_id').val('');
-            $('#pharianForm').trigger("reset");
+        $('#createNewKharian').click(function () {
+            $('#saveBtn').val("create-kharian");
+            $('#kharian_id').val('');
+            $('#kharianForm').trigger("reset");
             $('#modelHeading').html("Buat Pemasukan Harian");
             $('#ajaxModel').modal('show');
         });
         
-        $('body').on('click', '.editPharian', function () {
-          var pharian_id = $(this).data('id');
-          $.get("{{ route('ajaxpharians.index') }}" +'/' + pharian_id +'/edit', function (data) {
+        $('body').on('click', '.editKharian', function () {
+          var kharian_id = $(this).data('id');
+          $.get("{{ route('ajaxkharians.index') }}" +'/' + kharian_id +'/edit', function (data) {
               $('#modelHeading').html("Ubah Masukan Harian");
               $('#saveBtn').val("edit-user");
               $('#ajaxModel').modal('show');
-              $('#pharian_id').val(data.id);
+              $('#kharian_id').val(data.id);
               $('#tanggal').val(data.tanggal);
+              $('#koderekening').val(data.koderekening);
               $('#namapegawai').val(data.namapegawai);
-              $('#keterangan').val(data.keterangan);
-              $('#jumlahpemasukan').val(data.jumlahpemasukan);
+              $('#uraian').val(data.uraian);
+              $('#jumlahanggaran').val(data.jumlahanggaran);
           })
        });
         
@@ -332,13 +343,13 @@
             $(this).html('Sending..');
         
             $.ajax({
-              data: $('#pharianForm').serialize(),
-              url: "{{ route('ajaxpharians.store') }}",
+              data: $('#kharianForm').serialize(),
+              url: "{{ route('ajaxkharians.store') }}",
               type: "POST",
               dataType: 'json',
               success: function (data) {
          
-                  $('#pharianForm').trigger("reset");
+                  $('#kharianForm').trigger("reset");
                   $('#ajaxModel').modal('hide');
                   table.draw();
              
@@ -350,14 +361,14 @@
           });
         });
         
-        $('body').on('click', '.deletePharian', function () {
+        $('body').on('click', '.deleteKharian', function () {
          
-            var pharian_id = $(this).data("id");
+            var kharian_id = $(this).data("id");
             confirm("Are You sure want to delete !");
           
             $.ajax({
                 type: "DELETE",
-                url: "{{ route('ajaxpharians.store') }}"+'/'+pharian_id,
+                url: "{{ route('ajaxkharians.store') }}"+'/'+kharian_id,
                 success: function (data) {
                     table.draw();
                 },
@@ -375,7 +386,7 @@
     </script>
 
 
-   
+
 
 </body>
 

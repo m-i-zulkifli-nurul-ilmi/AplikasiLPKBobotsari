@@ -43,6 +43,21 @@ class LaporanController extends Controller
             
         }
         return view('laporan');
+
+        if (request()->ajax()) {
+
+            if (!empty($request->from_date)) {
+                $data = DB::table('kharians')
+
+                    ->whereBetween('tanggal', array($request->from_date, $request->to_date))
+                    ->get();
+            } else {
+                $data = DB::table('pharians')
+                    ->get();
+            }
+            return datatables()->of($data)->make(true);
+        }
+        return view('laporan');
     }
 
     /**

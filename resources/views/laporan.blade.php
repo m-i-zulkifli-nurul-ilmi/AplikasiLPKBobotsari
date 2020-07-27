@@ -138,6 +138,14 @@
                                 Pemasukan
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('ktambah') }}">
+                                <span data-feather="shopping-cart"></span>
+                                Pengeluaran
+                            </a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ url('laporan') }}">
                                 <span data-feather="bar-chart-2"></span>
