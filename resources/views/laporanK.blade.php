@@ -27,7 +27,7 @@
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
     <title align="center">Laporan Keuangan Pasar Bobotsari</title>
-   
+
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -103,7 +103,7 @@
         </button>
 
 
-        <h4 class="putih">Laporan Pemasukan</h4>
+        <h4 class="putih">Laporan Pengeluaran</h4>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -120,7 +120,7 @@
 
 
     <div class="container-fluid">
-       
+
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="sidebar-sticky pt-3">
@@ -145,20 +145,21 @@
                                 Pengeluaran
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ url('laporan') }}">
+                            <a class="nav-link" href="{{ url('laporan') }}">
                                 <span data-feather="bar-chart-2"></span>
                                 Laporan Pemasukan
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('laporanK') }}">
+                            <a class="nav-link active" href="{{ url('laporanK') }}">
                                 <span data-feather="bar-chart-2"></span>
                                 Laporan Pengeluaran
                             </a>
                         </li>
+
                     </ul>
                 </div>
             </nav>
@@ -184,22 +185,24 @@
                 </div>
                 <br />
 
-                <table class="table table-bordered data-table " style="width:100%" id="pharians">
+                <table class="table table-bordered data-table " style="width:100%" id="kharians">
 
                     <thead>
                         <tr>
                             <th>NO</th>
                             <th>Id</th>
                             <th>Tanggal</th>
+                            <th>Kode Rekening</th>
                             <th>Nama Pegawai</th>
-                            <th>Keterangan</th>
-                            <th>Jumlah Pemasukan</th>
+                            <th>Uraian</th>
+                            <th>Jumlah Anggaran</th>
 
                         </tr>
                     </thead>
                     <tfoot align="right">
                         <tr>
 
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -267,7 +270,7 @@
        
         function load_data(from_date = '', to_date = '')
         {            
-           var aw = $('#pharians').DataTable({            
+           var aw = $('#kharians').DataTable({            
                 dom: 'lBfrtip',
                 buttons: [        
                 {
@@ -293,7 +296,7 @@
                 serverSide: true,
                 ajax: {
                 
-                url:'{{ route("laporan.index") }}',
+                url:'{{ route("laporanK.index") }}',
                 
                 data:{from_date:from_date, to_date:to_date},
             
@@ -315,16 +318,20 @@
                     name:'tanggal'
                 },
                 {
+                    data:'koderekening',
+                    name:'koderekening'
+                },
+                {
                     data:'namapegawai',
                     name:'namapegawai'
                 },
                 {
-                    data:'keterangan',
-                    name:'keterangan'
+                    data:'uraian',
+                    name:'uraian'
                 },
                 {
-                    data:'jumlahpemasukan',
-                    name:'jumlahpemasukan'
+                    data:'jumlahanggaran',
+                    name:'jumlahanggaran'
                 }
             ],
             
@@ -343,7 +350,7 @@
             
             // Total over all pages
             total = api
-            .column( 5 )
+            .column( 6 )
             .data()
             .reduce( function (a, b) {
             return intVal(a) + intVal(b);
@@ -351,15 +358,15 @@
             
             // Total over this page
             pageTotal = api
-            .column( 5, { page: 'current'} )
+            .column( 6, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
             return intVal(a) + intVal(b);
             }, 0 );
             
             // Update footer
-            $( api.column( 4 ).footer() ).html('Total');
-            $( api.column( 5 ).footer() ).html(
+            $( api.column( 5 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(
             'Rp '+pageTotal );
             
             
@@ -382,7 +389,7 @@
         var to_date = $('#to_date').val();
         if(from_date != '' && to_date != '')
         {
-        $('#pharians').DataTable().destroy();
+        $('#kharians').DataTable().destroy();
         load_data(from_date, to_date);
         }
         else
@@ -394,7 +401,7 @@
         $('#refresh').click(function(){
         $('#from_date').val('');
         $('#to_date').val('');
-        $('#pharians').DataTable().destroy();
+        $('#kharians').DataTable().destroy();
         load_data();
         });
         

@@ -131,9 +131,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('laporan') }}">
                             <span data-feather="bar-chart-2"></span>
-                            Laporan
+                            Laporan Pemasukan
                         </a>
-                    </li> 
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('laporanK') }}">
+                            <span data-feather="bar-chart-2"></span>
+                            Laporan Pengeluaran
+                        </a>
+                    </li>
                     </ul>                       
                 </div>
             </nav>

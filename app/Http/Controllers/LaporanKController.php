@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pharian;
+use App\Kharian;
 use DataTables;
 use DB;
 
 
-class LaporanController extends Controller
+class LaporanKController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,6 @@ class LaporanController extends Controller
 
     public function __construct()
     {
-        
     }
 
     public function index(Request $request)
@@ -28,21 +27,19 @@ class LaporanController extends Controller
 
 
         if (request()->ajax()) {
-            
+
             if (!empty($request->from_date)) {
-                $data = DB::table('pharians')
-                    
+                $data = DB::table('kharians')
+
                     ->whereBetween('tanggal', array($request->from_date, $request->to_date))
                     ->get();
             } else {
-                $data = DB::table('pharians')
+                $data = DB::table('kharians')
                     ->get();
-                    
             }
             return datatables()->of($data)->make(true);
-            
         }
-        return view('laporan');
+        return view('laporanK');
     }
 
     /**
@@ -63,7 +60,7 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        Pharian::create($request->all());
+        Kharian::create($request->all());
         return back();
     }
 
