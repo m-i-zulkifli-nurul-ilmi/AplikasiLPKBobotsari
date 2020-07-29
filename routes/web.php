@@ -31,6 +31,9 @@ Route::resource('laporan', 'LaporanController');
 Route::get('/laporanK', 'LaporanKController@index');
 Route::resource('laporanK', 'LaporanKController');
 
+Route::get('/laporanPK', 'LaporanPKController@index');
+Route::resource('laporanPK', 'LaporanPKController');
+
 Route::get('/tambah', 'PharianAjaxController@index');
 Route::get('/ktambah', 'KharianAjaxController@index');
 Route::get('/laporanuser', 'LaporanUserController@index');
