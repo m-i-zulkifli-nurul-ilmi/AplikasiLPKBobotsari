@@ -149,6 +149,14 @@
                             Laporan Pengeluaran
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('laporanPK') }}">
+                            <span data-feather="bar-chart-2"></span>
+                            Laporan Analisa
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
