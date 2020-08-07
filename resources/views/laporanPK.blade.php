@@ -256,8 +256,8 @@
 <?php
  
 $dataPoints = array( 
-	array("label"=>"Pemasukan", "y"=>50),
-	array("label"=>"Pengeluaran", "y"=>50),
+	array("label"=>"Pemasukan", "y"=>1920000),
+	array("label"=>"Pengeluaran", "y"=>1050000),
 )
  
 ?>
@@ -532,8 +532,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Pasar Bobotsari"
 	}],
 	data: [{
-		type: "bar",
-		yValueFormatString: "#,##0.00\"%\"",
+		type: "pie",
+		yValueFormatString: "#,##0.00\"\"",
 		indexLabel: "{label} ({y})",
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
 	}]

@@ -334,14 +334,14 @@
             $('#saveBtn').val("create-kharian");
             $('#kharian_id').val('');
             $('#kharianForm').trigger("reset");
-            $('#modelHeading').html("Buat Pemasukan Harian");
+            $('#modelHeading').html("Buat Pengeluaran");
             $('#ajaxModel').modal('show');
         });
         
         $('body').on('click', '.editKharian', function () {
           var kharian_id = $(this).data('id');
           $.get("{{ route('ajaxkharians.index') }}" +'/' + kharian_id +'/edit', function (data) {
-              $('#modelHeading').html("Ubah Masukan Harian");
+              $('#modelHeading').html("Ubah Pengeluaran");
               $('#saveBtn').val("edit-user");
               $('#ajaxModel').modal('show');
               $('#kharian_id').val(data.id);
